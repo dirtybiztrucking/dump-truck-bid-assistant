@@ -46,7 +46,11 @@ st.title("Dump Truck Bid Assistant")
 
 st.sidebar.header("Enter Job Details")
 
-material_type = st.sidebar.text_input("Material Type", "Gravel")
+material_type = st.sidebar.selectbox(
+    "Material Type",
+    ["Gravel", "Dirt", "Sand", "Asphalt", "Millings", "Stone", "Topsoil"]
+)
+
 total_volume = st.sidebar.number_input("Total Volume (yards)", value=200.0)
 haul_distance = st.sidebar.number_input("Haul Distance (miles)", value=18.0)
 num_loads = st.sidebar.number_input("Number of Loads", value=15)
