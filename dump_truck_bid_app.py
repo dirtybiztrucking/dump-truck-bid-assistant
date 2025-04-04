@@ -50,7 +50,11 @@ material_type = st.sidebar.text_input("Material Type", "Gravel")
 total_volume = st.sidebar.number_input("Total Volume (yards)", value=200.0)
 haul_distance = st.sidebar.number_input("Haul Distance (miles)", value=18.0)
 num_loads = st.sidebar.number_input("Number of Loads", value=15)
-truck_type = st.sidebar.text_input("Truck Type", "Tri-axle")
+truck_type = st.sidebar.selectbox(
+    "Truck Type",
+    ["Tri-axle", "Quad-axle", "Quint-axle", "Dump Trailer", "Single Axle", "Tandem"]
+)
+
 fuel_price = st.sidebar.number_input("Fuel Price per Gallon", value=4.25)
 dump_fee_per_load = st.sidebar.number_input("Dump Fee per Load", value=75.0)
 driver_rate_per_hour = st.sidebar.number_input("Driver Rate per Hour", value=35.0)
