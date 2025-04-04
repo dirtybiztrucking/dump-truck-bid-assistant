@@ -1,5 +1,11 @@
 import streamlit as st
 
+from PIL import Image
+
+# Load and display the logo
+logo = Image.open("DirtyBiz-Black.png")  # Replace with your actual file name
+st.image(logo, width=250)  # Adjust width as needed
+
 def calculate_bid(
     material_type: str,
     total_volume: float,
