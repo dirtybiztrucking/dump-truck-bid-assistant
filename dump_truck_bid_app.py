@@ -79,29 +79,25 @@ if st.sidebar.button("Calculate Bid"):
     for key, value in result.items():
         st.write(f"**{key}:** {value}")
 
-from fpdf import FPDF
-import streamlit as st
+    # PDF generation moved inside the same block
+    from fpdf import FPDF
 
-def generate_pdf(data):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    
-    pdf.cell(200, 10, txt="Dump Truck Bid Summary", ln=True, align='C')
-    pdf.ln(10)
+    def generate_pdf(data):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)
+        pdf.cell(200, 10, txt="Dump Truck Bid Summary", ln=True, align='C')
+        pdf.ln(10)
 
-    for key, value in data.items():
-        line = f"{key}: {value}"
-        pdf.cell(200, 10, txt=line, ln=True)
+        for key, value in data.items():
+            pdf.cell(200, 10, txt=f"{key}: {value}", ln=True)
 
-    return pdf.output(dest="S").encode("latin1")
+        return pdf.output(dest="S").encode("latin1")
 
-# Create PDF and download button
-pdf_bytes = generate_pdf(result)
-st.download_button(
-    label="📄 Download Bid as PDF",
-    data=pdf_bytes,
-    file_name="dump_truck_bid.pdf",
-    mime="application/pdf"
-)
-
+    pdf_bytes = generate_pdf(result)
+    st.download_button(
+        label="📄 Download Bid as PDF",
+        data=pdf_bytes,
+        file_name="dump_truck_bid.pdf",
+        mime="application/pdf"
+    )
